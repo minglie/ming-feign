@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 
 /**
  * 服务器信息类
- * 
- * @author 晓风轻
  *
  */
 @Data

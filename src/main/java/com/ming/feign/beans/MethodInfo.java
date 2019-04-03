@@ -9,9 +9,6 @@ import java.util.Map;
 
 /**
  * 方法调用信息类
- * 
- * @author 晓风轻
- *
  */
 @Data
 public class MethodInfo {
