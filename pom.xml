@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.github.minglie</groupId>
 	<artifactId>ming-feign</artifactId>
-	<version>0.0.10-RELEASE</version>
+	<version>0.0.20-RELEASE</version>
 	<packaging>jar</packaging>
 	<name>ming_feign</name>
 	<description>Demo project for Spring Boot</description>
@@ -43,47 +43,7 @@
 	<profiles>
 		<profile>
 			<id>release</id>
-			<build>
-				<plugins>
-					<!-- Source -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-source-plugin</artifactId>
-						<version>2.1.2</version>
-						<executions>
-							<execution>
-								<phase>package</phase>
-								<goals>
-									<goal>jar-no-fork</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<!-- Javadoc -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>2.9.1</version>
-						<configuration>
-							<show>private</show>
-							<nohelp>true</nohelp>
-							<charset>UTF-8</charset>
-							<encoding>UTF-8</encoding>
-							<docencoding>UTF-8</docencoding>
-							<additionalparam>-Xdoclint:none</additionalparam>
-						</configuration>
-						<executions>
-							<execution>
-								<phase>package</phase>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<!-- GPG -->
-				</plugins>
-			</build>
+
 			<distributionManagement>
 				<snapshotRepository>
 					<id>oss</id>
@@ -151,6 +111,38 @@
 
 	<build>
 	<plugins>
+		<!--生成Source jar文件-->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-source-plugin</artifactId>
+			<version>2.2.1</version>
+			<executions>
+				<execution>
+					<id>attach-sources</id>
+					<goals>
+						<goal>jar-no-fork</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+		<!--生成Javadoc，关闭doclint,避免注解检查不通过-->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-javadoc-plugin</artifactId>
+			<version>2.9.1</version>
+			<executions>
+				<execution>
+					<id>attach-javadocs</id>
+					<goals>
+						<goal>jar</goal>
+					</goals>
+					<configuration>
+						<additionalparam>-Xdoclint:none</additionalparam>
+					</configuration>
+				</execution>
+			</executions>
+		</plugin>
+		<!--Maven GPG插件用于使用以下配置对组件进行签名-->
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-gpg-plugin</artifactId>
@@ -165,41 +157,6 @@
 				</execution>
 			</executions>
 		</plugin>
-
-		<plugin>
-		<groupId>org.apache.maven.plugins</groupId>
-		<artifactId>maven-source-plugin</artifactId>
-		<version>2.1.2</version>
-		<executions>
-			<execution>
-				<id>attach-sources</id>
-				<phase>verify</phase>
-				<goals>
-					<goal>jar-no-fork</goal>
-				</goals>
-			</execution>
-		</executions>
-	</plugin>
-	<plugin>
-		<groupId>org.apache.maven.plugins</groupId>
-		<artifactId>maven-javadoc-plugin</artifactId>
-		<version>2.10.4</version>
-		<configuration>
-			<aggregate>true</aggregate>
-			<charset>UTF-8</charset>
-			<encoding>UTF-8</encoding>
-			<docencoding>UTF-8</docencoding>
-			<additionalparam>-Xdoclint:none</additionalparam>
-		</configuration>
-		<executions>
-			<execution>
-				<id>attach-javadocs</id>
-				<goals>
-					<goal>jar</goal>
-				</goals>
-			</execution>
-		</executions>
-	</plugin>
 	</plugins>
 	</build>
 </project>
