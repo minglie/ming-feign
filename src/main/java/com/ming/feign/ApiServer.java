@@ -7,8 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * 服务器相关信息
- * 
- * @author 晓风轻
+ *
  *
  */
 @Target(ElementType.TYPE)
