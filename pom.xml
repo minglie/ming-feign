@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.github.minglie</groupId>
 	<artifactId>ming-feign</artifactId>
-	<version>0.0.20-RELEASE</version>
+	<version>0.0.21-RELEASE</version>
 	<packaging>jar</packaging>
 	<name>ming_feign</name>
 	<description>Demo project for Spring Boot</description>
