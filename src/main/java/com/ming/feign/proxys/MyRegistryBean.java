@@ -2,7 +2,6 @@ package com.ming.feign.proxys;
 
 
 import com.ming.feign.ApiServer;
-import org.apache.ibatis.binding.BindingException;
 import org.apache.ibatis.binding.MapperProxyFactory;
 import org.apache.ibatis.io.ResolverUtil;
 import org.springframework.beans.BeansException;
@@ -45,26 +44,6 @@ public class MyRegistryBean implements ApplicationContextAware, BeanDefinitionRe
             definition.setBeanClass(MyProxyFactory.class);
             definition.setAutowireMode(GenericBeanDefinition.AUTOWIRE_BY_TYPE); // 注册bean名,一般为类名首字母小写
             beanDefinitionRegistry.registerBeanDefinition(cz.getName(), definition);
-        }
-    }
-
-    public <T> boolean hasMapper(Class<T> type) {
-        return this.knownMappers.containsKey(type);
-    }
-
-    public <T> void addMapper(Class<T> type) {
-        if (type.isInterface()) {
-            if (this.hasMapper(type)) {
-                throw new BindingException("Type " + type + " is already known to the MapperRegistry.");
-            }
-            boolean loadCompleted = false;
-            try {
-                this.knownMappers.put(type, new MapperProxyFactory(type));
-            } finally {
-                if (!loadCompleted) {
-                    this.knownMappers.remove(type);
-                }
-            }
         }
     }
 

@@ -2,9 +2,6 @@ package com.ming.feign.interfaces;
 
 /**
  * 创建代理类接口
- * 
- * @author 晓风轻
- *
  */
 public interface ProxyCreator {
 	/**

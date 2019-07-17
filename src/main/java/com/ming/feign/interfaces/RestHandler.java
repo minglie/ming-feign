@@ -6,9 +6,6 @@ import com.ming.feign.beans.ServerInfo;
 
 /**
  * rest请求调用handler
- * 
- * @author 晓风轻
- *
  */
 public interface RestHandler {
 

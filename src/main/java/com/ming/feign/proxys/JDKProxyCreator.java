@@ -19,7 +19,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * 使用jdk动态代理实现代理类 * * @author 晓风轻 *
+ * 使用jdk动态代理实现代理类
  */
 @Slf4j
 public class JDKProxyCreator {
